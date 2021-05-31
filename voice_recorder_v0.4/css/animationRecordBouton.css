@@ -1,0 +1,172 @@
+
+.btRecord{
+    margin-top: 10vh;
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.wave {
+    opacity: 0.6;
+    position: relative;
+    width: 500px;
+    height: 0.001px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 0px;
+}
+
+
+button:hover {
+    box-shadow: -10px 0px 80px 1px red, 10px 0px 80px 1px blue;
+}
+
+button {
+    z-index: 999;
+    font-size: 1.5rem;
+    margin-left: 26vh;
+    position: absolute;
+    background-color: #fff ;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    box-shadow: -10px 0px 50px 1px rgb(31, 175, 201), 10px 0px 50px 1px rgb(14, 0, 197);
+    
+}
+
+
+
+@keyframes animate2{
+    50%{
+        box-shadow: 0px 0px 30px 10px #b96414;
+        height: 100%;
+        width: 50%;
+        
+    }
+    75%{
+        box-shadow: 0px 0px 30px 7.5px #b96414; 
+    }
+    100%{
+        box-shadow: 0px 0px 30px 5px #b96414; 
+    }
+}
+@keyframes animate3{
+    50%{
+        box-shadow: 0px 0px 30px 12px #aa7410;
+        height: 200%;
+        width: 40%;
+    }
+    75%{
+        box-shadow: 0px 0px 30px 8px #aa7410;
+        height: 250%;
+        width: 35%;
+    }
+    100%{
+        box-shadow: 0px 0px 30px 5px #aa7410; 
+        height: 100%;
+        width: 20px;
+    }
+}
+@keyframes animate4{
+    50%{
+        box-shadow: 0px 0px 30px 10px #7e6c09;
+    }
+    75%{
+        box-shadow: 0px 0px 30px 10px #26cc17;
+    }
+    100%{
+        box-shadow: 0px 0px 30px 5px #7e6c09;
+    }
+}
+@keyframes animate5{
+    50%{
+        box-shadow: 0px 0px 30px 7px #3299c2;
+        
+    }
+    75%{
+        box-shadow: 0px 0px 30px 9px #3299c2;
+        
+    }
+    100%{
+        box-shadow: 0px 0px 30px 8px #3299c2;
+    }
+}
+@keyframes animate6{
+    50%{
+        box-shadow: 0px 0px 30px 5px #8E5CFF;
+        height: 200%;
+        width: 10%;
+    }
+    75%{
+        box-shadow: 0px 0px 30px 13px #e918cd;
+        width: 10px;
+    }
+    100%{
+        box-shadow: 0px 0px 30px 10px #8E5CFF;
+    }
+}
+@keyframes animate7{
+    50%{
+        box-shadow: 0px 0px 30px 3px #5921db;
+        height: 100%;
+        width: 140%;
+    }
+    75%{
+        box-shadow: 0px 0px 30px 10px #c91836;
+    }
+    100%{
+        box-shadow: 0px 0px 30px 7px #5921db;
+    }
+}
+
+.wave:nth-child(1){
+    box-shadow: 0px 0px 30px 3px #FF8080;
+    
+}
+.wave:nth-child(2){
+    box-shadow: 0px 0px 30px 5px #b96414;
+    animation: animate2 6s infinite;
+}
+.wave:nth-child(3){
+    box-shadow: 0px 0px 30px 7px #389e19;
+    animation: animate3 4s infinite;
+}
+.wave:nth-child(4){
+    opacity: 0;
+    box-shadow: 0px 0px 30px 10px #7e6c09;
+    animation: animate4 4s infinite;
+}
+.wave:nth-child(5){
+    opacity: 0;
+    box-shadow: 0px 0px 30px 10px #3985c0;
+
+}
+.wave:nth-child(6){
+    box-shadow: 0px 0px 30px 7px #3299c2;
+    animation: animate5 8s infinite;
+    animation-delay: 3s;
+}
+.wave:nth-child(7){
+    box-shadow: 0px 0px 30px 5px #8E5CFF;
+    animation: animate6 8s infinite;
+    animation-delay: 8s;
+}
+.wave:nth-child(8){
+    box-shadow: 0px 0px 30px 3px #5921db;
+ 
+    animation: animate7 8s infinite;
+    animation-delay: 3s;
+}
+
+@media screen and (max-width:640px){
+    button{
+        margin-left: 37vh;
+    }
+}

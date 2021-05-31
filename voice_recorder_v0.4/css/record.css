@@ -1,0 +1,111 @@
+
+/* Page 1 initialisation */
+.main{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    zoom: 1.4;
+}
+
+.main-child {
+   width: 60vh;
+
+}
+
+#micro_test_bar {
+    width: 100%;
+}
+
+.navigation{
+    width: 100%;
+    margin-top: 8%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.navigation span:hover, .navigation a:hover{
+    color: deeppink;
+}
+
+.navigation i{
+    font-size: 3rem;
+}
+.sex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sex label {
+    margin-right: 50px;
+}
+
+.sex input {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.age {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.age input {
+    height: 30px;
+    width: 50px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+
+/* Page 2 record */
+#record .text{
+    border: 1px solid #2699FB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    height: 100px;
+}
+
+#record_list{
+    position: absolute;
+    top: 12%;
+    right: 2vh;
+}
+
+
+#record_list li{
+    list-style: none;
+}
+
+/* Mobile version */
+@media screen and (max-width:640px) {
+    .main {
+      margin-top: 15%;
+      zoom: 0.5;
+      font-size: 1.5rem;
+    }
+    .main-child{
+        width: 80vh;
+    }
+  }
+
+  /* Position of the record list */
+  @media screen and (max-width:1600px) {
+      #record_list{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+      }
+      
+  }

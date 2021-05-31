@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/record.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animationRecordBouton.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+    <script type="text/javascript" src="https://devweb.prinv.isen.fr/projet/common/data.js"></script>
+    <script type="text/javascript" src="https://devweb.prinv.isen.fr/projet/common/utils.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="nav">
+        <div class="logo">
+            <img src="./assets/micro.svg">
+            <h1 class="titre">VoiceRecorder</h1>
+        </div>
+        <div class="links">
+            <a href="/">Accueil</a>
+            <a href="/record.html">Enregistrement</a>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="main" id="initialisation">
+            <h1>Initialisation</h1>
+            <form class="main-child">
+                <h2>Sexe</h2>
+                <div class="sex">
+                    <input type="radio" name="SC" id="N">
+                    <label for="N">non défini</label>
+                    <input type="radio" name="SC" id="M">
+                    <label for="M">Masculin</label>
+                    <input type="radio" name="SC" id="F">
+                    <label for="F">Féminin</label>
+                </div>
+                <div class="age">
+                    <h2>Age</h2>
+                    <input id="Age" type="number" min="1" max="120" step="1" value="0">
+                </div>
+                <h2>Vérification du micro :</h2>
+                <progress id="micro_test_bar" max="100" value="0" ref="micro"></progress>
+                <div class="navigation">
+                    <a href="/" class="prev"><i class="fas fa-angle-left"></i> Précédent</a>
+                    <span class="next" onclick="navigation.nextPage()">Suivant <i class="fas fa-angle-right"></i></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="page" hidden>
+        <div class="main" id="record">
+            <p class="instruction">Cliquez sur <i class="fas fa-microphone"></i> puis lisez la phrase à haute voix.</p>
+            <progress class="progress" max="100" value="0" ref="micro"></progress>
+            <div class="main-child">
+                <div class="text_box">
+                    <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+
+                <div class="btRecord">
+                    <div class="bar">
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <button class="border" type="button" onclick="ToggleRecording()"><i class="fas fa-microphone"></i></button>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                    </div>
+                </div>
+
+        
+                <div class="navigation">
+                    <span class="previous" onclick="navigation.previousPage()"><i class="fas fa-angle-left"></i>
+                        Précédent</span>
+                    <span class="next">Suivant <i class="fas fa-angle-right"></i></span>
+                </div>
+                <div id="record_list">
+                    <div class="record_list_child">
+                        <ul id="listrecords"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/Record.js"></script>
+    <script src="js/Navigation.js"></script>
+</body>
+
+</html>
