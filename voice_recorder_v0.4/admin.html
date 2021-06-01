@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VoiceRecorder</title>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/backend.css">
+    <link rel="stylesheet" href="css/header.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.js" defer></script>
+    <script src="https://momentjs.com/downloads/moment.js" defer></script>
+    <script src="js/Statistique.js" defer></script>
+</head>
+
+<body onload="init()">
+
+    <!-- header -->
+    <div id="nav">
+        <div class="logo">
+            <img src="./assets/micro.svg">
+            <h1 class="titre">VoiceRecorder Backend</h1>
+        </div>
+
+        <div class="links">
+            <a class="public" href="/">Accueil</a>
+            <a class="public" href="/record.html">Enregistrement</a>
+            <a class="backend" href="/admin.html">Statistiques</a>
+            <a class="backend" href="/browsing.html">Recherche</a>
+        </div>
+    </div>
+
+
+    <!-- Statistique page -->
+    <div class="page">
+        <div class="main" id="Statistique">
+            <h1>Statistiques</h1>
+            <div class="chart-container">
+
+                <div class="chart">
+                    <canvas id="gender_chart"></canvas>
+                </div>
+
+                <div class="chart">
+                    <canvas id="age_chart"></canvas>
+                </div>
+
+                <div class="chart para">
+                    <canvas id="date_chart"></canvas>
+                    <div class="parametre">
+                        <label>
+                            <p>De</p>
+                            <input type="date" oninput="updateDateChart(date_chart, this.value, undefined)" />
+                        </label>
+                        <label>
+                            <p>à</p>
+                            <input type="date" oninput="updateDateChart(date_chart, undefined, this.value)" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="chart">
+                    <canvas id="sentences_chart"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

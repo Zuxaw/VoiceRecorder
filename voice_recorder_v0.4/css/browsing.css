@@ -1,0 +1,64 @@
+#browsing-container{
+    margin-top: 2vh;
+}
+
+#parsing-options{
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: 0.1px solid lightgray;
+    background-color: white;
+    border-radius: 20px;
+    width: 25vh;
+    height: 40vh;
+    transition: 0.4s ease;
+    font-weight: 600;
+}
+
+#parsing-options label{
+    text-decoration: underline;
+    color: #AF7AC5;
+
+}
+
+#parsing-options input,select{
+    color: #2699FB;
+    font-weight: 600;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+#parsing-options:hover{
+    transform: scale(1.05);
+}
+
+#browsing-container h1{
+    display: flex;
+    justify-content: center;
+}
+
+#parsing-options button{
+    font-size: 30px;
+    color: #2699FB;
+    border: none;
+    transition: 0.4s ease;
+}
+
+#parsing-options button:hover{
+    transform: scale(1.5);
+}
+
+@media screen and (max-width:640px) {
+
+    #browsing-container{
+        zoom: 0.8;
+    }
+    #parsing-options{
+        padding: 10px;
+    }
+    
+}

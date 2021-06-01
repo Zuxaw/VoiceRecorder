@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    zoom: 1.4;
+    zoom: 1.2;
 }
 
 .main-child {
@@ -64,6 +64,9 @@
     border: 2px solid black;
 }
 
+.alert{
+    color: red;
+}
 
 /* Page 2 record */
 #record .text{
@@ -86,8 +89,39 @@
     list-style: none;
 }
 
+.btRecord{
+    color: red;
+}
+
+.progression{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.progression #percent{
+    margin-left:10px;
+    color: cornflowerblue;
+}
+
+/* last page */
+#remerciement a{
+    margin-top: 5%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    border: 3px solid #2c3e50;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+#remerciement a:hover{
+    transform: scale(1.1);
+}
+
 /* Mobile version */
-@media screen and (max-width:640px) {
+@media screen and (max-width:800px) {
     .main {
       margin-top: 15%;
       zoom: 0.5;
@@ -99,7 +133,7 @@
   }
 
   /* Position of the record list */
-  @media screen and (max-width:1600px) {
+  @media screen and (max-width:1650px) {
       #record_list{
           display: flex;
           flex-direction: column;

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation des donn&eacute;es</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/browsing.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js" defer></script>
+    <script src="https://devweb.prinv.isen.fr/projet/common/utils.js" defer></script>
+    <script src="js/Browsing.js" defer></script>
+</head>
+
+<body onload="init(project_id)">
+
+    <!-- header -->
+    <div id="nav">
+        <div class="logo">
+            <img src="./assets/micro.svg">
+            <h1 class="titre">VoiceRecorder Backend</h1>
+        </div>
+
+        <div class="links">
+            <a class="public" href="/">Accueil</a>
+            <a class="public" href="/record.html">Enregistrement</a>
+            <a class="backend" href="/admin.html">Statistiques</a>
+            <a class="backend" href="/browsing.html">Recherche</a>
+        </div>
+    </div>
+
+
+
+    <div id="browsing-container">
+        <h1>Recherche de données</h1>
+        <div id="parsing-options">
+            <label for="from-select">Date de départ</label>
+            <input id="from-select" type="date" oninput="">
+
+            <label for="to-select">Date de fin</label>
+            <input id="to-select" type="date" oninput="">
+
+            <label for="project-select">Projet</label>
+            <select id="project-select"></select>
+
+            <label for="age-select">Tranche d'&acirc;ge</label>
+            <select id="age-select">
+                <option value="0">8-18 ans</option>
+                <option value="1">18-30 ans</option>
+                <option value="2">30-40 ans</option>
+                <option value="3">40-60 ans</option>
+                <option value="4">60-80+ ans</option>
+            </select>
+
+            <label for="gender-select">Sexe</label>
+            <select id="gender-select">
+                <option value="M">Homme</option>
+                <option value="F">Femme</option>
+                <option value="N">Non d&eacute;fini</option>
+            </select>
+
+            <label for="sentence-select">Phrase</label>
+            <select id="sentence-select"></select>
+            <label>Ordre d'affichage</label>
+            <div class="sort">
+                <button onclick="exported_data = sortData(exported_data, `descending`);"><i class="fas fa-caret-up"></i></button>
+                <button onclick="exported_data = sortData(exported_data, `ascending`);"><i class="fas fa-caret-down"></i></button>
+            </div>
+        </div>
+        <div id="data-container"></div>
+    </div>
+</body>
+
+</html>

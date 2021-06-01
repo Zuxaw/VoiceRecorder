@@ -1,0 +1,70 @@
+
+#Statistique{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#Statistique .parametre input{
+    font-size: 0.6rem;
+    width: 15vh;
+    padding: 5%;
+    border-radius: 10px;
+    color: cornflowerblue;
+    border: 1px solid lightgray;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+canvas{
+    max-width: 50%;
+    max-height: 30vh;
+    margin: 30px;
+}
+
+.chart{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 70vh;
+    margin: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    transition: 0.4s ease;
+}
+
+.chart:hover{
+    transform: scale(1.05);
+}
+
+.parametre{
+    margin-top: 5%;
+    border-color: royalblue;
+}
+
+@media screen and (max-width: 640px){
+    canvas{
+        max-height: 100vh;
+        max-width: 100%;
+    }
+
+    .chart{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-radius: 0%;
+        margin: 0px;
+    }
+    .parametre{
+        margin-top:-50px;
+        padding-bottom: 20px;
+    }
+}

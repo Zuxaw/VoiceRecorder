@@ -14,4 +14,4 @@ var navigation = {
         page[navigation.currentPage].hidden = false
         page[navigation.currentPage+1].hidden = true
     }
-}
+};

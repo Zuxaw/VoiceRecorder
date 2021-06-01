@@ -28,7 +28,7 @@ button:hover {
 }
 
 button {
-    z-index: 999;
+    z-index: 50;
     font-size: 1.5rem;
     margin-left: 26vh;
     position: absolute;
@@ -41,6 +41,9 @@ button {
     
 }
 
+#record .btIcon{
+    color: rgb(245, 92, 92);
+}
 
 
 @keyframes animate2{

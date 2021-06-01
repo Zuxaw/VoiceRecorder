@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animationRecordBouton.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
-    <script type="text/javascript" src="https://devweb.prinv.isen.fr/projet/common/data.js"></script>
-    <script type="text/javascript" src="https://devweb.prinv.isen.fr/projet/common/utils.js"></script>
+    <script src="https://devweb.prinv.isen.fr/projet/common/utils.js"></script>
+    <script src="js/data.js"></script>
     <title>Document</title>
 </head>
 
 <body>
 
+    <!-- header -->
     <div id="nav">
         <div class="logo">
             <img src="./assets/micro.svg">
@@ -28,14 +29,16 @@
         </div>
     </div>
 
+    <!-- first page -->
     <div class="page">
         <div class="main" id="initialisation">
             <h1>Initialisation</h1>
             <form class="main-child">
                 <h2>Sexe</h2>
+                <!-- sexe selection -->
                 <div class="sex">
                     <input type="radio" name="SC" id="N">
-                    <label for="N">non défini</label>
+                    <label for="N">Non défini</label>
                     <input type="radio" name="SC" id="M">
                     <label for="M">Masculin</label>
                     <input type="radio" name="SC" id="F">
@@ -43,26 +46,36 @@
                 </div>
                 <div class="age">
                     <h2>Age</h2>
+                    <!-- age selection -->
                     <input id="Age" type="number" min="1" max="120" step="1" value="0">
                 </div>
                 <h2>Vérification du micro :</h2>
-                <progress id="micro_test_bar" max="100" value="0" ref="micro"></progress>
+                <progress id="micro_test_bar" value="0" max="100" ref="micro"></progress>
+
+                <!-- user interaction -->
+                <p class="alert"></p>
+
+                <!-- navigation -->
                 <div class="navigation">
                     <a href="/" class="prev"><i class="fas fa-angle-left"></i> Précédent</a>
-                    <span class="next" onclick="navigation.nextPage()">Suivant <i class="fas fa-angle-right"></i></span>
+                    <span class="next" onclick="NextPage()">Suivant <i class="fas fa-angle-right"></i></span>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- 2nd page -->
     <div class="page" hidden>
         <div class="main" id="record">
-            <p class="instruction">Cliquez sur <i class="fas fa-microphone"></i> puis lisez la phrase à haute voix.</p>
-            <progress class="progress" max="100" value="0" ref="micro"></progress>
+            <p>Cliquez sur <i class="fas fa-microphone btIcon"></i> <span class="instruction">puis lisez la phrase à
+                    haute voix.</span></p>
+            <div class="progression">
+                <progress class="progress" value="0"></progress>
+                <p id="percent"></p>
+            </div>
             <div class="main-child">
                 <div class="text_box">
-                    <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="text"></p>
                 </div>
 
                 <div class="btRecord">
@@ -71,7 +84,8 @@
                         <span class="wave"></span>
                         <span class="wave"></span>
                         <span class="wave"></span>
-                        <button class="border" type="button" onclick="ToggleRecording()"><i class="fas fa-microphone"></i></button>
+                        <button class="border" type="button" onclick="ToggleRecording()"><i
+                                class="fas fa-microphone btIcon"></i></button>
                         <span class="wave"></span>
                         <span class="wave"></span>
                         <span class="wave"></span>
@@ -79,12 +93,20 @@
                     </div>
                 </div>
 
-        
+
+
+                <!-- navigation system -->
                 <div class="navigation">
                     <span class="previous" onclick="navigation.previousPage()"><i class="fas fa-angle-left"></i>
                         Précédent</span>
-                    <span class="next">Suivant <i class="fas fa-angle-right"></i></span>
+                    <span class="next" onclick="NextPage()">Suivant <i class="fas fa-angle-right"></i></span>
                 </div>
+
+                <!-- user interaction -->
+                <p class="alert" hidden>Cette phrase ne s'est pas bien enregistrée, veuillez recommencer.</p>
+                <p class="alert" hidden>Vous n'avez pas fini d'enregistrer toutes les phrases.</p>
+
+                <!-- list of audio recorded -->
                 <div id="record_list">
                     <div class="record_list_child">
                         <ul id="listrecords"></ul>
@@ -94,9 +116,18 @@
         </div>
     </div>
 
+    <!-- last page -->
+    <div class="page" hidden>
+        <div class="main" id="remerciement">
+            <h1>MERCI</h1>
+            <p>Tous les enregistrements ont été effectués</p>
+            <a href="/">Accueil</a>
+        </div>
+    </div>
 
-    <script src="js/Record.js"></script>
+    <!-- script importation -->
     <script src="js/Navigation.js"></script>
+    <script src="js/Record.js"></script>
 </body>
 
 </html>
