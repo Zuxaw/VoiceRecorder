@@ -1,5 +1,4 @@
-
-var data = [
+const data = [
     {
         "id": 1,
         "sentence": "Je souhaite faire un réglage de mon lit",
@@ -475,5 +474,4 @@ var data = [
         "sentence": "encore plus",
         "projet": "HYDRO"
     }
-
 ];

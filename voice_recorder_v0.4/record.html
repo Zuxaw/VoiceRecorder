@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceRecorder</title>
     <link rel="stylesheet" href="css/record.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/style.css">
@@ -12,7 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
     <script src="https://devweb.prinv.isen.fr/projet/common/utils.js"></script>
     <script src="js/data.js"></script>
-    <title>Document</title>
 </head>
 
 <body>
@@ -31,10 +31,12 @@
 
     <!-- first page -->
     <div class="page">
+        
         <div class="main" id="initialisation">
             <h1>Initialisation</h1>
             <form class="main-child">
                 <h2>Sexe</h2>
+                
                 <!-- sexe selection -->
                 <div class="sex">
                     <input type="radio" name="SC" id="N">
@@ -44,13 +46,15 @@
                     <input type="radio" name="SC" id="F">
                     <label for="F">Féminin</label>
                 </div>
+                
                 <div class="age">
                     <h2>Age</h2>
                     <!-- age selection -->
                     <input id="Age" type="number" min="1" max="120" step="1" value="0">
                 </div>
+                
                 <h2>Vérification du micro :</h2>
-                <progress id="micro_test_bar" value="0" max="100" ref="micro"></progress>
+                <progress id="micro_test_bar" value="0" max="100"></progress>
 
                 <!-- user interaction -->
                 <p class="alert"></p>
@@ -60,6 +64,7 @@
                     <a href="/" class="prev"><i class="fas fa-angle-left"></i> Précédent</a>
                     <span class="next" onclick="NextPage()">Suivant <i class="fas fa-angle-right"></i></span>
                 </div>
+                
             </form>
         </div>
     </div>
@@ -84,16 +89,15 @@
                         <span class="wave"></span>
                         <span class="wave"></span>
                         <span class="wave"></span>
-                        <button class="border" type="button" onclick="ToggleRecording()"><i
-                                class="fas fa-microphone btIcon"></i></button>
+                        <button class="border" type="button" onclick="ToggleRecording()">
+                            <i class="fas fa-microphone btIcon"></i>
+                        </button>
                         <span class="wave"></span>
                         <span class="wave"></span>
                         <span class="wave"></span>
                         <span class="wave"></span>
                     </div>
                 </div>
-
-
 
                 <!-- navigation system -->
                 <div class="navigation">

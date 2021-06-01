@@ -1,10 +1,8 @@
-//GENERATION UID ON THE LOADING OF THE PAGE
-var uid = uuidv4();
+// GENERATION UID ON THE LOADING OF THE PAGE
+const uid = uuidv4();
+const project_id = "STKS";
 
-//GROUP
-let group = "STKS";
-
-//Declaration of global variable
+// Declaration of global variables
 let listrecords = document.getElementById("listrecords");
 let bar = document.querySelector('#micro_test_bar');
 let text_area = document.querySelector('#record .text');
@@ -23,21 +21,22 @@ let record_one = {
     "uid": uid,
     "sentence": "PHRASE DE TEST",
     "sentenceid": 1,
-    "project": group,
+    "project": project_id,
     "recordtime": 0,
 }
 
 const NextPage = () => {
-    if (1 < navigation.currentPage) navigation.nextPage();
-    else if (0 == navigation.currentPage) { // check if inputs are correct at init
+    if (1 < navigation.currentPage) {
+        navigation.nextPage();
+    } else if (navigation.currentPage === 0) { // check if inputs are correct at init
         let radio = document.querySelectorAll('.sex input');
         let age = document.querySelectorAll('#Age');
         if ((radio[0].checked | radio[1].checked | radio[2].checked) /*if a radio is selected*/ & (12 <= age[0].value & age[0].value <= 140) /*age between 12 and 140 yo*/ ) {
-
+            
             if (radio[0].checked) record_one.sexe = "N";
             else if (radio[1].checked) record_one.sexe = "M";
             else record_one.sexe = "F";
-
+            
             record_one.age = age[0].value;
             navigation.nextPage();
             alert[0].innerHTML = "";
@@ -48,44 +47,31 @@ const NextPage = () => {
             alert[0].innerHTML = "Veuillez avoir entre 12 et 140 ans"; // "please do be between 12 and 140 yo"
         }
     }
-    else if (1 == navigation.currentPage) {
-        if (data.length >= sentence_id) {
-            
+    else if (navigation.currentPage === 1) {
+        if (data.length >= sentence_id)
             alert[2].hidden = false; // shows (back) message when all sentences are not yet recorded
-        }
     }
 }
 
 /////////////////////////////////PAGE ONLOAD///////////////////////////////////
-
 navigator.permissions.query({
     name: "microphone"
 }).then(result => {
-    if (result.state == "granted" || result.state == "prompt") {
-        if (!recordIdle) {
+    if (result.state === "granted" || result.state === "prompt")
+        if (!recordIdle)
             initMediaCapture(displayVolume, BuildDataAndUpload);
-        }
-
-    }
 });
-
 
 const displayVolume = (volume) => {
     bar.value = volume;
     micro_volume = volume;
 }
 
-
-
-
 ///////////////////////////////////////////////////////////////////////
-
-
-
 const sentenceProgression = (sentence_id) => {
     //set up the size of progress bar
     progress_bar.max = data.length - 1;
-
+    
     //initialization of the sentence
     text_area.innerText = data[sentence_id].sentence;
     progress_bar.value = sentence_id;
@@ -96,8 +82,7 @@ const sentenceProgression = (sentence_id) => {
 };
 sentenceProgression(sentence_id);
 
-
-//send data to the server and create li with audio
+// Send data to the server and create li with audio
 const BuildDataAndUpload = () => {
     blob = new Blob(chunks, {
         type: media.type
@@ -109,79 +94,87 @@ const BuildDataAndUpload = () => {
     mt.controls = true;
     mt.src = url;
     hf.href = url;
-
+    
     li.appendChild(mt);
-
+    
     listrecords.appendChild(li);
-    UploadData(record_one,
-        () => {
-
-            console.log("SAVED");
-        });
-
+    UploadData(record_one, () => console.log("SAVED"));
 }
 
 // idle micro timeout computing
 const secondsIdleMicroTimeout = 10.0; // in seconds
-const tickIdleMicroClock = 50; // in milliseconds
+const tickMicroClock = 50; // in milliseconds
 const micro_volumeMinimum = 1.25;
+let secondsMicroUse = Number(0);
 let secondsIdleMicroUse = 0;
 let clockMicro;
+let clockIdleMicro;
 
 const StartClock = (clockMicro) => {
-    secondsIdleMicroUse = 0;
+    secondsMicroUse = 0;
     clockMicro = setInterval(() => {
-
-        if (!record) clearInterval(clockMicro); // stops clock
-
-        // reset idle clock counter if volume or increment up since last func call
-        else {
-            if (micro_volume > micro_volumeMinimum) secondsIdleMicroUse = 0;
-            else secondsIdleMicroUse += tickIdleMicroClock / 1000;
-
-            // stop record if idle more than the timeout range specified
-            if (secondsIdleMicroUse > parseFloat(secondsIdleMicroTimeout)) StopClock();
-        }
-
-    }, tickIdleMicroClock); // test idle micro each tick
+        secondsMicroUse += Number(tickMicroClock);
+    },tickMicroClock); // clock each millis
 }
 
-
-const StopClock = (clockMicro) => { // executed when record stops by inactivity
-    secondsIdleMicroUse = 0;
+const StopClock = (clockMicro) => {
     clearInterval(clockMicro); // stops clock
+}
 
+const StartIdleClock = (clockIdleMicro) => {
+    secondsIdleMicroUse = 0;
+    clockIdleMicro = setInterval(() => {
+        if (!record) {
+            clearInterval(clockIdleMicro); // stops clock
+            // reset idle clock counter if volume or increment up since last func call
+        } else {
+            if (micro_volume > micro_volumeMinimum) secondsIdleMicroUse = 0;
+            else secondsIdleMicroUse += tickMicroClock / 1000;
+            
+            // stop record if idle more than the timeout range specified
+            if (secondsIdleMicroUse > parseFloat(secondsIdleMicroTimeout)) StopIdleClock();
+        }
+    }, tickMicroClock); // test idle micro each tick
+}
+
+const StopIdleClock = (clockIdleMicro) => { // executed when record stops by inactivity
+    secondsIdleMicroUse = 0;
+    clearInterval(clockIdleMicro); // stops clock
+    
     record = false;
     recordIdle = true;
     alert[1].hidden = false; // displays message when sentence is not saved
-
-
+    
     StopRecording();
 }
 
-//Select the user instruction message
+// Select the user instruction message
 let instruction = document.querySelector('.instruction');
 
 const StartRecording = () => {
     //Warning not change this variable
     chunks = [];
     recorder.start();
-
+    
     //Change icon and user message
     let bt_icon = document.querySelectorAll('#record .btIcon');
     instruction.innerText = "une fois terminé."
     bt_icon[0].classList.toggle("fa-square");
     bt_icon[1].classList.toggle("fa-square");
-
+    
     recordIdle = false;
     alert[1].hidden = true; // hide (back) message when sentence is not saved
-
+    
+    StartIdleClock();
     StartClock();
 }
 
 const StopRecording = () => {
     recorder.stop(); // run save / upload
-
+    StopClock();
+    record_one.recordtime = secondsMicroUse;
+    secondsMicroUse = 0;
+    
     //Change icon and user message
     let bt_icon = document.querySelectorAll('#record .btIcon');
     instruction.innerText = "puis lisez la phrase à haute voix."
@@ -189,32 +182,23 @@ const StopRecording = () => {
     bt_icon[1].classList.toggle("fa-microphone");
 }
 
-
-//ToggleRecording with user interation on the right button
+// ToggleRecording with user interation on the right button
 const ToggleRecording = () => {
     if (record) {
         record = false;
-        StopRecording();
         if (!recordIdle) { // if the current sentence has not been stoped by inactivity
-            
             if (data.length - 1 < sentence_id) { // auto-next page when all sentences completed
-                
-                console.log("ccnext");
                 navigation.nextPage();
                 alert[2].hidden = true; // hide (back) message when all sentences are not yet recorded
             }
             //initialization of the next sentence
-            try {
-                sentenceProgression(sentence_id);
-              } catch (error) {
-              }
             //update the sentence
             sentence_id++;
-            console.log("ccprog" + sentence_id);
-            
+            try { sentenceProgression(sentence_id); } catch (error) {}
         }
+        StopRecording();
     } else {
         record = true;
         StartRecording();
     }
-};
+}
